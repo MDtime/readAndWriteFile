@@ -19,40 +19,37 @@ MainWindow::MainWindow(QWidget *parent)
     char str[10]={0};
     int i=0;
     while(file.getline(str,sizeof(str)))
+    {
+        if(i==0)
         {
-
-            if(i==0)
-            {
-                ui->lineEdit_jd->setText(str);
-            }
-            else if(i==1)
-            {
-                ui->lineEdit_wd->setText(str);
-            }
-            else if(i==2)
-            {
-                ui->lineEdit_height->setText(str);
-            }
-            else if(i==3)
-            {
-                ui->lineEdit_g->setText(str);
-            }
-            else if(i==4)
-            {
-                ui->lineEdit_fwj->setText(str);
-            }
-            else if(i==5)
-            {
-                ui->lineEdit_sc->setText(str);
-            }
-            else if(i==6)
-            {
-                break;
-            }
-            i++;
+            ui->lineEdit_jd->setText(str);
         }
-
-
+        else if(i==1)
+        {
+            ui->lineEdit_wd->setText(str);
+        }
+        else if(i==2)
+        {
+            ui->lineEdit_height->setText(str);
+        }
+        else if(i==3)
+        {
+            ui->lineEdit_g->setText(str);
+        }
+        else if(i==4)
+        {
+            ui->lineEdit_fwj->setText(str);
+        }
+        else if(i==5)
+        {
+            ui->lineEdit_sc->setText(str);
+        }
+        else if(i==6)
+        {
+            break;
+        }
+        i++;
+    }
 }
 
 MainWindow::~MainWindow()
@@ -68,10 +65,11 @@ MainWindow::~MainWindow()
 //234.765
 void MainWindow::on_pushButton_point_clicked()
 {
-    QFile f("D:\\Qt\\Tools\\QtCreator\\TestQt\\build-readAndWriteFile-Desktop_Qt_6_3_2_MinGW_64_bit-Debug\\debug\\data.txt");
+    //这是第二个版本
+    QFile f("../build-readAndWriteFile-Desktop_Qt_6_3_2_MinGW_64_bit-Debug/debug/data.txt");
     if(!f.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-            qDebug() << ("打开文件失败");
+        qDebug() << ("打开文件失败");
     }
     QTextStream txtOutput(&f);
     txtOutput<<ui->lineEdit_jd->text();
